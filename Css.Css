@@ -2,7 +2,7 @@
 .navbar {
     display: flex;
     justify-content:space-around;
-    background-image: url(img/metal.jpeg);
+    background-image: url(metal.jpeg);
     font-size: 1vw;
     color: ghostwhite;
     flex-wrap: wrap;
@@ -42,7 +42,7 @@ a  {
 
 }
 body {
-    background-image: url(img/poster.jpg); 
+    background-image: url(poster.jpg); 
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100%;
