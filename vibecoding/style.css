@@ -1,0 +1,93 @@
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      background: #000;
+    }
+
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.8s ease;
+      z-index: -2;
+      overflow: hidden;
+    }
+html {
+    scroll-behavior: smooth;
+}
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: -1;
+    }
+
+    .hero, .spacer {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 a {
+      text-decoration: none;
+}
+    .scroll-section { height: 300vh; position: relative; }
+    .phone-wrap {
+      position: sticky;
+      top: 10vh;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .story-text {
+      width: 300px;
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 1.2;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .phone {
+      width: 300px;
+      height: 600px;
+      border: 10px solid #333;
+      border-radius: 40px;
+      background: #000;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .screen { width: 100%; height: 100%; position: relative; overflow: hidden; }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      left: -100%;
+      transition: left 0.8s ease;
+    }
+    .slide.active { left: 0; }
+    .slide.prev { left: 100%; }
+    .logo img{
+       width: 200px;
+    }
+    .changing a {
+      font-size: 24px;
+    font-weight: bold;
+    animation: colorShift 3s infinite; /* Cycles colors every 3 seconds */
+  }
+
+  @keyframes colorShift {
+    0% { color: red; }
+    33% { color: green; }
+    66% { color: blue; }
+    100% { color: red; }
+    }
