@@ -112,3 +112,11 @@ html {
     --bg-light: #f8fafc;
     --white: #ffffff;
 }
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+a {
+    text-decoration: none;
+}
