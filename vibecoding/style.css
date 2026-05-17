@@ -91,3 +91,24 @@ html {
     66% { color: blue; }
     100% { color: red; }
     }
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 5%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+.logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -1px; }
+.logo span { color: var(--accent); }
+.nav-links { list-style: none; display: flex; align-items: center; }
+.nav-links li { margin-left: 2rem; }
+.nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.9rem; }
+:root {
+    --primary: #1a1a1a;
+    --accent: #3b82f6;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+}
