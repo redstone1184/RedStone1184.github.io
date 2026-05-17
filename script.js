@@ -72,23 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- Video Popup Logic ---
     const videoTrigger = document.getElementById('video-project');
     const videoModal = document.getElementById('videoModal');
     const closeVideoBtn = document.querySelector('.close-video-btn');
     const youtubePlayer = document.getElementById('youtubePlayer');
-    
-    // Save the original source URL so we can clear/reset it to stop audio playback on close
     const videoSrc = youtubePlayer ? youtubePlayer.src : '';
 
     if (videoTrigger && videoModal) {
         videoModal.style.display = 'none';
 
-        // Open Video Modal
+
         videoTrigger.addEventListener('click', (e) => {
             e.preventDefault();
-            // Re-assign src to ensure video loads fresh when opened
+
             youtubePlayer.src = videoSrc; 
             videoModal.style.display = 'flex';
             setTimeout(() => {
@@ -96,17 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 10);
         });
 
-        // Close via 'X' button
+
         closeVideoBtn.addEventListener('click', closeVideo);
 
-        // Close via clicking backdrop overlay
+       
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) {
                 closeVideo();
             }
         });
 
-        // Close via Escape Key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && videoModal.classList.contains('active')) {
                 closeVideo();
@@ -116,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeVideo() {
         videoModal.classList.remove('active');
-        // Instantly kill video playback audio stream by wiping the source link
+
         if(youtubePlayer) youtubePlayer.src = ''; 
         
         setTimeout(() => {
