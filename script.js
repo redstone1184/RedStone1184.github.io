@@ -1,126 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Initial Hero Text Animation
-    const heroElements = document.querySelectorAll('.anim-text');
-    heroElements.forEach((el, i) => {
-        setTimeout(() => {
-            el.classList.add('reveal');
-        }, 300 * i);
-    });
+    // Select elements safely
+    const imgTrigger = document.getElementById('poster-project');
+    const imgModal = document.getElementById('imageModal');
+    const vidTrigger = document.getElementById('video-project');
+    const vidModal = document.getElementById('videoModal');
+    const ytPlayer = document.getElementById('youtubePlayer');
+    const ytSrc = ytPlayer ? ytPlayer.src : '';
 
-    // 2. Intersection Observer for Project Cards
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+    // Unified Open Modal Logic
+    const openModal = (modal, setupCallback) => {
+        if (!modal) return;
+        if (setupCallback) setupCallback();
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('active'), 10);
     };
 
-    const projectObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal');
-                // Optional: Stop observing after it appears
-                projectObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach(card => {
-        projectObserver.observe(card);
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const trigger = document.getElementById('poster-project');
-    const modal = document.getElementById('imageModal');
-    const closeBtn = document.querySelector('.close-btn');
-
-    if (trigger && modal) {
-        modal.style.display = 'none';
-
-        // Listen for user click on Movie Poster Card
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault(); // Stop page from refreshing/reloading
-            modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.classList.add('active');
-            }, 10);
-        });
-
-        // Close when clicking 'X'
-        closeBtn.addEventListener('click', closeModal);
-
-        // Close when clicking gray area outside image
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Close on pressing Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-    }
-
-    function closeModal() {
+    // Unified Close Modal Logic
+    const closeModal = (modal, teardownCallback) => {
+        if (!modal || !modal.classList.contains('active')) return;
         modal.classList.remove('active');
         setTimeout(() => {
             modal.style.display = 'none';
+            if (teardownCallback) teardownCallback();
         }, 300);
-    }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- Video Popup Logic ---
-    const videoTrigger = document.getElementById('video-project');
-    const videoModal = document.getElementById('videoModal');
-    const closeVideoBtn = document.querySelector('.close-video-btn');
-    const youtubePlayer = document.getElementById('youtubePlayer');
-    
-    // Save the original source URL so we can clear/reset it to stop audio playback on close
-    const videoSrc = youtubePlayer ? youtubePlayer.src : '';
+    };
 
-    if (videoTrigger && videoModal) {
-        videoModal.style.display = 'none';
-
-        // Open Video Modal
-        videoTrigger.addEventListener('click', (e) => {
+    // Project 1: Image Modal Event Handlers
+    if (imgTrigger && imgModal) {
+        imgTrigger.addEventListener('click', (e) => {
             e.preventDefault();
-            // Re-assign src to ensure video loads fresh when opened
-            youtubePlayer.src = videoSrc; 
-            videoModal.style.display = 'flex';
-            setTimeout(() => {
-                videoModal.classList.add('active');
-            }, 10);
-        });
-
-        // Close via 'X' button
-        closeVideoBtn.addEventListener('click', closeVideo);
-
-        // Close via clicking backdrop overlay
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                closeVideo();
-            }
-        });
-
-        // Close via Escape Key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
-                closeVideo();
-            }
+            openModal(imgModal);
         });
     }
 
-    function closeVideo() {
-        videoModal.classList.remove('active');
-        // Instantly kill video playback audio stream by wiping the source link
-        if(youtubePlayer) youtubePlayer.src = ''; 
-        
-        setTimeout(() => {
-            videoModal.style.display = 'none';
-        }, 300);
+    // Project 3: Video Modal Event Handlers
+    if (vidTrigger && vidModal) {
+        vidTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(vidModal, () => { if (ytPlayer) ytPlayer.src = ytSrc; });
+        });
     }
+
+    // Dynamic backdrop and close button listeners for all elements
+    document.querySelectorAll('.popup-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.hasAttribute('data-close')) {
+                closeModal(imgModal);
+                closeModal(vidModal, () => { if (ytPlayer) ytPlayer.src = ''; });
+            }
+        });
+    });
+
+    // Universal Escape Key event handler
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal(imgModal);
+            closeModal(vidModal, () => { if (ytPlayer) ytPlayer.src = ''; });
+        }
+    });
 });
