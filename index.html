@@ -3,72 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio | Creative & Research</title>
+    <title>David Dong | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav class="navbar">
-        <div class="logo">David <span>Dong</span></div>
+        <a href="index.html" class="logo">David <span>Dong</span></a>
         <ul class="nav-links">
             <li><a href="#work">Work</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="mailto:davedong369@gmail.com" class="btn-contact">Contact</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-
         <div class="sliding-bg"></div>
         <div class="hero-overlay"></div>
-        
         <div class="hero-content">
-            <h1 class="anim-text">Visualized <span class="highlight">Portfolio</span></h1>
-            <p class="anim-text">Im David Dong, a communication design major looking to bridge the gap between research and narrative design.</p>
+            <h1>Visualized <span class="highlight">Portfolio</span></h1>
+            <p>Communication design major bridging the gap between research and narrative design.</p>
         </div>
     </header>
 
     <section id="work" class="portfolio-section">
         <h2 class="section-title">Previous Projects</h2>
         <div class="project-grid">
-            
-           <a href="#" id="poster-project" class="project-card">
-                <div class="project-img">
-                    <img src="assets/poster.png" alt="Movie poster project">
-                </div>
-                <div class="project-info">
-                    <h3>Movie Poster</h3>
-                    <p>A movie poster design based around typography.</p>
-                </div>
+            <a href="#" id="poster-project" class="project-card">
+                <div class="project-img"><img src="assets/poster.png" alt="Movie Poster"></div>
+                <div class="project-info"><h3>Movie Poster</h3><p>Typography-centered design layout.</p></div>
             </a>
-
             <a href="vibecoding/Vibe.html" class="project-card">
-                <div class="project-img">
-                    <div class="img-placeholder"><img src="assets/vibe.png"></div>
-                </div>
-                <div class="project-info">
-                    <h3>Vibe Coding</h3>
-                    <p>Vibe coding project where a chatbot is used to form a skeleton of a website</p>
-            </div></a>
+                <div class="project-img"><img src="assets/vibe.png" alt="Vibe Coding"></div>
+                <div class="project-info"><h3>Vibe Coding</h3><p>Chatbot generated website wireframe skeleton.</p></div>
+            </a>
             <a href="#" id="video-project" class="project-card">
-    <div class="project-img">
-        <img src="assets/vidnail.png" alt="Video">
-    </div>
-    <div class="project-info">
-        <h3>Video Presentation</h3>
-        <p>A video showcase demonstrating project concepts.</p>
-    </div>
-</a>
+                <div class="project-img"><img src="assets/vidnail.png" alt="Video Project"></div>
+                <div class="project-info"><h3>Video Presentation</h3><p>Showcase demonstrating core project concepts.</p></div>
+            </a>
+        </div>
+    </section>
 
-<div id="videoModal" class="popup-modal">
-    <span class="close-video-btn">&times;</span>
-    <div class="video-container">
-        <iframe id="youtubePlayer" src="https://www.youtube.com/embed/LuaO51HVHTA?si=k8FOe4n56YXzjyC6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div id="imageModal" class="popup-modal">
+        <span class="close-btn" data-close>&times;</span>
+        <img class="popup-content" src="assets/poster.png" alt="Enlarged Poster">
     </div>
-</div>
-           
+
+    <div id="videoModal" class="popup-modal">
+        <span class="close-btn" data-close>&times;</span>
+        <div class="video-container">
+            <iframe id="youtubePlayer" src="https://www.youtube.com/embed/LuaO51HVHTA?si=k8FOe4n56YXzjyC6&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
