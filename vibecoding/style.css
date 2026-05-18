@@ -120,3 +120,9 @@ html {
 a {
     text-decoration: none;
 }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; position: fixed; width: 100%; z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
+.logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -1px; }
+.logo span { color: var(--accent); }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
+.btn-contact { background: var(--accent); color: #fff !important; padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
+.btn-contact:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
