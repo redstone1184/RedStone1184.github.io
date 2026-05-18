@@ -11,9 +11,9 @@ a { text-decoration: none; color: inherit; }
 .btn-contact { background: var(--accent); color: #fff !important; padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
 .btn-contact:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-/* Hero Section with Looping Background */
+/* Hero Section with Infinite Moving Loop Background */
 .hero { height: 75vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; }
-.sliding-bg { position: absolute; top: 0; left: 0; width: 200%; height: 100%; background: linear-gradient(90deg, #f1f5f9 0%, #ffffff 50%, #f1f5f9 100%); background-size: 50% 100%; z-index: 1; animation: loopBg 20s linear infinite; }
+.sliding-bg { position: absolute; top: 0; left: 0; width: 200%; height: 100%; background-image: url('assets/1641264230-origin.jpg'); background-repeat: repeat-x; background-size: auto 100%; z-index: 1; animation: loopBg 20s linear infinite; }
 @keyframes loopBg { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle, transparent 20%, var(--white) 100%); z-index: 2; }
 .hero-content { position: relative; z-index: 3; padding: 0 10%; max-width: 800px; }
